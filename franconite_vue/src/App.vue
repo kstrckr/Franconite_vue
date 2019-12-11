@@ -53,6 +53,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $dark-mono;
+
+  a {
+      text-decoration: none;
+      color: $dark-mono;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      &:active {
+      opacity: 1;
+      color: black;
+      }
+}
   
   & #top-bar {
   padding: 16px;

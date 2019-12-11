@@ -2,6 +2,7 @@
   <div class="header-container">
     <div class="nametag">
       <h1>Kurt Strecker</h1>
+      <a href="https://github.com/kstrckr">github.com/kstrckr</a>
     </div>
     <div class="contact">
       <h2>502-468-7387</h2>
@@ -29,25 +30,26 @@ export default Vue.extend({
     justify-content: space-between;
 
     // padding: 32px 16px;
+    margin-bottom: 16px;
 
-    a {
-      text-decoration: none;
-      color: $dark-mono;
-    }
+    // a {
+    //   text-decoration: none;
+    //   color: $dark-mono;
+
+    //   &:hover {
+    //     opacity: 0.5;
+    //   }
+
+    //   &:active {
+    //   opacity: 1;
+    //   color: black;
+    //   }
+    // }
 
     h1, h2 {
       font-weight: normal;
       margin: 0;
       padding: 0;
-    }
-
-    .mail-link:hover {
-      opacity: 0.5;
-    }
-
-    .mail-link:active {
-      opacity: 1;
-      color: black;
     }
   }
 </style>
