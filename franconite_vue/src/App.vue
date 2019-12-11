@@ -66,7 +66,15 @@ body {
       opacity: 1;
       color: black;
       }
-}
+  }
+  
+   p {
+    text-indent: 32px;
+  }
+
+  h1 {
+    font-weight: normal;
+  }
   
   & #top-bar {
   padding: 16px;

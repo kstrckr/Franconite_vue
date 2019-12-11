@@ -61,14 +61,6 @@ export default Vue.extend({
 @import '../assets/styles/globals.scss';
 
 .home {
- h1 {
-   font-weight: normal;
- }
-
- p {
-    text-indent: 32px;
-  }
-
   .project-cards {
     display: flex;
     justify-content: space-around;
