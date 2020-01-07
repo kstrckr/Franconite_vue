@@ -4,12 +4,17 @@
     <p>{{ bodyText.p1 }}</p>
     <p>{{ bodyText.p2 }}</p>
     <div class="project-cards">
-        <div class="project-card">
-          <h1>Python Data</h1>
-          <img src="../assets/images/sales_vs_vol_vs_pop.png">
-          <p>Database design, seeding, and database analysis of Iowa state Liquor Sales using Anaconda and Bokeh.</p>
-          <a href="https://github.com/kstrckr/python_data_project">Github/Python_Data</a>
-        </div>
+      <ProjectCard
+      v-for="project in projects"
+      v-bind:key = project.name
+      :projectCard="project"/>
+
+      <!-- <div class="project-card">
+        <h1>Python Data</h1>
+        <img src="../assets/images/sales_vs_vol_vs_pop.png">
+        <p>Database design, seeding, and database analysis of Iowa state Liquor Sales using Anaconda and Bokeh.</p>
+        <a href="https://github.com/kstrckr/python_data_project">Github/Python_Data</a>
+      </div>
       
       <div class="project-card">
         <h1>Heat Pype</h1>
@@ -30,7 +35,7 @@
         <img src="../assets/images/eod_py.png">
         <p>An end of day asset verification script developed for Saks photo studios. It generates expected file names based on an asset tracking CSV file and checks the local directory to eliminate manual naming errors.</p>
         <a href="https://github.com/kstrckr/commageddon">Github/Commageddon</a>
-      </div>
+      </div> -->
 
   </div>
   </div>
@@ -40,18 +45,37 @@
 import Vue from 'vue';
 
 import { BodyText, IBodyText } from '../classes/BodyText';
+import { fetchPosts } from '../utils/fetchUtils';
 import ProjectCard from '../components/ProjectCard.vue';
+import { IProjectCard, ProjectCardModel } from '../classes/ProjectCardModel';
 
 
 export default Vue.extend({
   name: 'home',
   components: {
+    ProjectCard,
   },
   data: function() {
     return {
       languages: [''],
       bodyText: BodyText as IBodyText,
+      projects: [] as IProjectCard[],
     }
+  },
+  methods: {
+    convertProjectJsonToProjectCardArray(projects: ProjectCardModel[]): IProjectCard[] {
+      const projectArray: ProjectCardModel[] = [];
+      projects.forEach( (project: ProjectCardModel) => {
+        projectArray.push(project);
+      })
+      return projectArray;
+    },
+  },
+  created() {
+    fetchPosts()
+      .then( (resJson) => {
+        this.projects = this.convertProjectJsonToProjectCardArray(resJson as IProjectCard[])
+      });
   }
 })
 </script>
