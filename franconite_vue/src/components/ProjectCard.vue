@@ -1,7 +1,9 @@
 <template>
   <div class="project-card">
-    <h1>{{projectCard.title}}</h1>
-    <img src="../assets/images/sales_vs_vol_vs_pop.png">
+    <h1>{{ projectCard.title }}</h1>
+    <img :src="fullImageUrl">
+    <p>{{ projectCard.bodyText }}</p>
+    <a :href="projectCard.githubUrl" target="_blank" rel="noopener noreferrer">Github/kstrckr/{{ projectCard.githubUrlLabel }}</a>
   </div>
 </template>
 
@@ -16,6 +18,15 @@ export default Vue.extend({
     projectCard : {
       type: Object as () => ProjectCardModel,
     }
+  },
+  computed: {
+    fullImageUrl(): string {
+      // eslint-disable-next-line no-console
+      return '/images/' + this.projectCard.imageUrl;
+    },
+    githubUrl(): string {
+      return 'www.github.com/kstrckr/' + this.projectCard.githubUrl;
+    },
   }
 })
 
@@ -23,8 +34,11 @@ export default Vue.extend({
 
 <style scoped lang="scss">
   .project-card {
+    text-align: center;
     width: 360px;
-    height: 520px;
+    // height: 520px;
+    margin: 12px 12px;
     background-color: #fff;
+    padding: 0px 12px 12px 6px;
   }
 </style>
