@@ -40,6 +40,7 @@ export default Vue.extend({
   padding: 6px 3px;
 
   &:hover {
+    cursor: pointer;
     opacity: 0.5;
   }
 }
