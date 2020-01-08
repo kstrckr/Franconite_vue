@@ -27,8 +27,6 @@ const projectsModels = [
     githubUrl: 'https://github.com/kstrckr/commageddon',
     githubUrlLabel: 'Commageddon',
   },
-
-
 ]
 
 module.exports = projectsModels;

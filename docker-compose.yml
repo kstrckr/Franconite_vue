@@ -26,16 +26,29 @@ services:
     networks:
       - app-network
 
-  certbot:
+  certbot_com:
     image: certbot/certbot
-    container_name: certbot
+    container_name: certbot_com
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
       - web-root:/var/www/html
     depends_on:
       - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email kurt@kurtstrecker.io --agree-tos --no-eff-email --force-renewal -d kurtstrecker.com  -d www.kurtstrecker.com -d www.kurtstrecker.io -d kurtstrecker.io
+    command: certonly --webroot --webroot-path=/var/www/html --email kurt@kurtstrecker.io --agree-tos --no-eff-email --force-renewal -d kurtstrecker.com  -d www.kurtstrecker.com
+
+
+  certbot_io:
+    image: certbot/certbot
+    container_name: certbot_io
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - webserver
+    command: certonly --webroot --webroot-path=/var/www/html --email kurt@kurtstrecker.io --agree-tos --no-eff-email --force-renewal -d kurtstrecker.io  -d www.kurtstrecker.io
+
 
 volumes:
   certbot-etc:
